@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Muhammed Nagy</title>
+	<meta name="author" content="Muhammed Nagy"/>
+	<meta name="Description" content="Just a student who love coding and learning"/>
+	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery.mousewheel-min.js"></script>
+	<script src="js/jquery.terminal-min.js"></script>
+	<link href="css/jquery.terminal.css" rel="stylesheet"/>
+</head>
+<body>
+
+	<script>
+
+		jQuery(document).ready(function($) {
+			var id = 1;
+			$('#terminal').terminal(function(command, term) {
+				if (command == 'help' || command == 'h') {
+					term.echo("Available commands are email, cv, github, linkedin, and twitter");
+				} else if (command == 'cv'){
+					term.echo("https://www.muhammed-nagy.com/CV.pdf");
+				} else if (command == "email") {
+					term.echo("muhammednagyone@gmail.com");
+				} else if(command == "github") {
+					term.echo("https://github.com/muhammednagy");
+				} else if(command == "linkedin") {
+					term.echo("https://eg.linkedin.com/in/muhammednagy");
+				} else if(command == "twitter") {
+					term.echo("https://twitter.com/muhammed_nagy_0");
+				}	else if (command == 'whoami'){
+					term.echo("Muhammed_Nagy");
+				}	else if (command == 'whereami'){
+					term.echo("https://www.muhammed-nagy.com");
+				} else {
+					term.echo("Unknown command: " + command);
+				}
+			}, {
+				greetings:
+				"welcome to my website.\n\
+				As you can see, you can use the terminal.\n\
+				use 'help' if you need it!",
+				onBlur: function() {
+            return false;
+        }
+    });
+		});
+
+	</script>
+
+	<div id="terminal"></div>
+</body>
