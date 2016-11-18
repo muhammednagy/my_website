@@ -18,7 +18,7 @@
 			var id = 1;
 			$('#terminal').terminal(function(command, term) {
 				if (command == 'help' || command == 'h') {
-					term.echo("Available commands are email, cv, github, linkedin, and twitter");
+					term.echo("Available commands are email, cv, github, linkedin,facebook and twitter");
 				} else if (command == 'cv'){
 					term.echo("https://muhnagy.com/CV.pdf");
 				} else if (command == "email") {
@@ -29,9 +29,11 @@
 					term.echo("https://eg.linkedin.com/in/muhammednagy");
 				} else if(command == "twitter") {
 					term.echo("https://twitter.com/muhammed_nagy_0");
-				}	else if (command == 'whoami'){
+				} else if (command == 'facebook'){
+					term.echo("https://www.facebook.com/muhammed.nagy.0");
+				} else if (command == 'whoami'){
 					term.echo("Muhammed_Nagy");
-				}	else if (command == 'whereami'){
+				} else if (command == 'whereami'){
 					term.echo("https://muhnagy.com");
 				} else {
 					term.echo("Unknown command: " + command);
