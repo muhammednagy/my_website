@@ -9,6 +9,11 @@
 	<script src="js/jquery.mousewheel-min.js"></script>
 	<script src="js/jquery.terminal-min.js"></script>
 	<link href="css/jquery.terminal.css" rel="stylesheet"/>
+	<script type="text/javascript">
+		if (screen.width <= 699) {
+			document.location = "/normal/index.html";
+		}
+</script>
 </head>
 <body>
 
@@ -42,11 +47,12 @@
 				greetings:
 				"welcome to my website.\n\
 				As you can see, you can use the terminal.\n\
-				use 'help' if you need it!",
-				onBlur: function() {
-            return false;
-        }
-    });
+				use 'help' if you need it!.\n\
+				for normal website please visit  https://www.muhnagy.com/normal \n\ ",
+					onBlur: function() {
+						return false;
+					}
+				});
 		});
 
 	</script>
