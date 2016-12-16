@@ -23,9 +23,9 @@
 			var id = 1;
 			$('#terminal').terminal(function(command, term) {
 				if (command == 'help' || command == 'h') {
-					term.echo("Available commands are email, cv, github, linkedin,facebook and twitter");
-				} else if (command == 'cv'){
-					term.echo("https://muhnagy.com/CV.pdf");
+					term.echo("Available commands are email, resume, github, linkedin,facebook and twitter");
+				} else if (command == 'resume'){
+					term.echo("https://muhnagy.com/resume.pdf");
 				} else if (command == "email") {
 					term.echo("me@muhnagy.com");
 				} else if(command == "github") {
