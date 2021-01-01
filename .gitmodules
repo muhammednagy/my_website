@@ -1,0 +1,3 @@
+[submodule "passgen"]
+	path = passgen
+	url = https://github.com/muhammednagy/password_generator.git
