@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<title>Muhammed Nagy</title>
+	<title>Nagy</title>
 	<meta name="author" content="Muhammed Nagy"/>
 	<meta name="Description" content="Just a student who love coding and learning"/>
 	<script src="js/jquery-1.7.1.min.js"></script>
@@ -23,6 +23,8 @@
 
 
 </script>
+
+<meta name="google-site-verification" content="Ie7JEO5fVDnhADudhKO4M-xw0cSTUS2IlYauFC-cgI0" />
 </head>
 <body>
 
@@ -32,7 +34,7 @@
 			var id = 1;
 			$('#terminal').terminal(function(command, term) {
 				if (command == 'help' || command == 'h') {
-					term.echo("Available commands are email, resume, github, linkedin,facebook and twitter");
+					term.echo("Available commands are email, resume, github, linkedin,facebook,twitter,Medium(My personal EN blog) and manshar(my personal Arabic blog)");
 				} else if (command == 'resume'){
 					term.echo("https://muhnagy.com/resume.pdf");
 				} else if (command == "email") {
@@ -49,9 +51,13 @@
 					term.echo("Muhammed_Nagy");
 				} else if (command == 'whereami'){
 					term.echo("https://muhnagy.com");
-				} else {
+				} else if (command == 'Medium'){
+					term.echo("https://blog.muhnagy.com");
+				} else if (command == 'manshar'){
+					term.echo("https://www.manshar.com/publishers/profile/4232/published/");
+				} else {	
 					term.echo("Unknown command: " + command);
-				}
+				} 
 			}, {
 				greetings:
 				"welcome to my website.\n\
