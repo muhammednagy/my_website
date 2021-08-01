@@ -34,7 +34,7 @@
 			var id = 1;
 			$('#terminal').terminal(function(command, term) {
 				if (command == 'help' || command == 'h') {
-					term.echo("Available commands are email, resume, github, linkedin,facebook,twitter,Medium(My personal EN blog) and manshar(my personal Arabic blog)");
+					term.echo("Available commands are email, resume, github, linkedin,facebook,twitter and Medium");
 				} else if (command == 'resume'){
 					term.echo("https://muhnagy.com/resume.pdf");
 				} else if (command == "email") {
@@ -42,7 +42,7 @@
 				} else if(command == "github") {
 					term.echo("https://github.com/muhammednagy");
 				} else if(command == "linkedin") {
-					term.echo("https://eg.linkedin.com/in/muhammednagy");
+					term.echo("https://www.linkedin.com/in/muhnagy/");
 				} else if(command == "twitter") {
 					term.echo("https://twitter.com/muhammed_nagy_0");
 				} else if (command == 'facebook'){
@@ -53,8 +53,6 @@
 					term.echo("https://muhnagy.com");
 				} else if (command == 'Medium'){
 					term.echo("https://blog.muhnagy.com");
-				} else if (command == 'manshar'){
-					term.echo("https://www.manshar.com/publishers/profile/4232/published/");
 				} else {	
 					term.echo("Unknown command: " + command);
 				} 
