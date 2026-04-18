@@ -1,74 +1,302 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>Nagy</title>
-	<meta name="author" content="Muhammed Nagy"/>
-	<meta name="Description" content="Just a student who loves coding and learning"/>
-	<script src="js/jquery-1.7.1.min.js"></script>
-	<script src="js/jquery.mousewheel-min.js"></script>
-	<script src="js/jquery.terminal-min.js"></script>
-	<link href="css/jquery.terminal.css" rel="stylesheet"/>
-	<script type="text/javascript">
-		if (screen.width <= 699) {
-			document.location = "/normal/index.html";
-		}
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nagy Salem</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff;
+    --bg2: #f7f7f5;
+    --text: #1a1a1a;
+    --muted: #666;
+    --accent: #2563eb;
+    --border: #e5e5e2;
+    --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111;
+      --bg2: #1a1a1a;
+      --text: #f0f0ee;
+      --muted: #999;
+      --accent: #60a5fa;
+      --border: #2a2a2a;
+    }
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-  ga('create', 'UA-89278792-2', 'auto');
-  ga('send', 'pageview');
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg); border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-name { font-weight: 600; font-size: 15px; letter-spacing: -0.3px; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
 
+  section { padding: 5rem 2rem; max-width: 760px; margin: 0 auto; }
+  section + section { border-top: 1px solid var(--border); }
 
-</script>
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -1px; line-height: 1.15; }
+  h2 { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; }
+  h3 { font-size: 1.05rem; font-weight: 600; }
 
-<meta name="google-site-verification" content="Ie7JEO5fVDnhADudhKO4M-xw0cSTUS2IlYauFC-cgI0" />
+  .hero-title { margin-bottom: 0.75rem; }
+  .hero-sub { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.5rem; }
+  .hero-desc { font-size: 1rem; color: var(--muted); max-width: 520px; margin-bottom: 2rem; }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 0.5rem 1.25rem;
+    border: 1px solid var(--border); border-radius: 6px;
+    font-size: 14px; font-weight: 500; color: var(--text);
+    background: transparent; cursor: pointer; transition: background 0.15s;
+  }
+  .btn:hover { background: var(--bg2); text-decoration: none; }
+  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn-primary:hover { opacity: 0.88; background: var(--accent); }
+
+  .about-text { font-size: 1.05rem; color: var(--muted); max-width: 640px; }
+  .about-text p + p { margin-top: 1rem; }
+
+  .timeline { display: flex; flex-direction: column; gap: 2rem; }
+  .tl-item { display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem; }
+  .tl-date { font-size: 13px; color: var(--muted); padding-top: 2px; }
+  .tl-role { font-weight: 600; font-size: 1rem; }
+  .tl-company { font-size: 14px; color: var(--muted); margin-bottom: 0.4rem; }
+  .tl-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+  .proj-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem;
+  }
+  .proj-card h3 { margin-bottom: 0.4rem; }
+  .proj-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin: 0.75rem 0; }
+  .tag {
+    font-size: 11px; font-weight: 500; padding: 2px 8px;
+    border: 1px solid var(--border); border-radius: 20px;
+    color: var(--muted); background: var(--bg);
+  }
+  .proj-link { font-size: 13px; color: var(--accent); }
+
+  .skills-groups { display: flex; flex-direction: column; gap: 1.5rem; }
+  .skill-group h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.75rem; }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pill {
+    font-size: 13px; padding: 4px 12px;
+    border: 1px solid var(--border); border-radius: 20px;
+    color: var(--text); background: var(--bg2);
+  }
+
+  .edu-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .edu-item { display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem; }
+  .edu-year { font-size: 13px; color: var(--muted); padding-top: 2px; }
+  .edu-degree { font-weight: 600; }
+  .edu-inst { font-size: 14px; color: var(--muted); }
+
+  .contact-wrap { max-width: 480px; }
+  .contact-wrap p { color: var(--muted); margin-bottom: 1.5rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 14px; color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 0.6rem 1rem; background: var(--bg2);
+    transition: border-color 0.15s;
+  }
+  .contact-link:hover { border-color: var(--accent); text-decoration: none; }
+  .contact-icon { font-size: 15px; width: 20px; text-align: center; }
+
+  footer { text-align: center; padding: 2rem; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); }
+
+  @media (max-width: 560px) {
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 3rem 1.25rem; }
+    .tl-item, .edu-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    .tl-date, .edu-year { font-size: 12px; }
+  }
+</style>
 </head>
 <body>
 
-	<script>
+<nav>
+  <span class="nav-name">Nagy Salem</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-		jQuery(document).ready(function($) {
-			var id = 1;
-			$('#terminal').terminal(function(command, term) {
-				if (command == 'help' || command == 'h') {
-					term.echo("Available commands are email, resume, github, linkedin,facebook,twitter and Medium");
-				} else if (command == 'resume'){
-					term.echo("https://muhnagy.com/resume.pdf");
-				} else if (command == "email") {
-					term.echo("me@muhnagy.com");
-				} else if(command == "github") {
-					term.echo("https://github.com/muhammednagy");
-				} else if(command == "linkedin") {
-					term.echo("https://www.linkedin.com/in/muhnagy/");
-				} else if(command == "twitter") {
-					term.echo("https://twitter.com/muhammed_nagy_0");
-				} else if (command == 'facebook'){
-					term.echo("https://www.facebook.com/muhammed.nagy.0");
-				} else if (command == 'whoami'){
-					term.echo("Nagy Salem");
-				} else if (command == 'whereami'){
-					term.echo("https://muhnagy.com");
-				} else if (command == 'Medium'){
-					term.echo("https://blog.muhnagy.com");
-				} else {	
-					term.echo("Unknown command: " + command);
-				} 
-			}, {
-				greetings:
-				"welcome to my website.\n\
-				As you can see, you can use the terminal.\n\
-				use 'help' if you need it!.\n\
-				for normal website please visit  https://www.muhnagy.com/normal \n\ ",
-					onBlur: function() {
-						return false;
-					}
-				});
-		});
+<section id="hero" style="padding-top: 6rem; padding-bottom: 5rem;">
+  <h1 class="hero-title">Nagy Salem</h1>
+  <p class="hero-sub">Infrastructure Engineer · AI Researcher · Builder</p>
+  <p class="hero-desc">I design and operate cloud-native infrastructure, explore LLMs in DevOps, and build tools that make engineers faster. Based in Tallinn, Estonia.</p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#contact">Get in touch</a>
+    <a class="btn" href="#projects">View projects</a>
+  </div>
+</section>
 
-	</script>
+<section id="about">
+  <h2>About</h2>
+  <div class="about-text">
+    <p>I'm a DevOps and infrastructure engineer with a background in Kubernetes, CI/CD pipelines, cloud security, and platform engineering. I work at the intersection of reliability engineering and developer experience — building systems that teams can trust and iterate on quickly.</p>
+    <p>Alongside my infrastructure work, I'm pursuing research at the University of Tartu exploring how large language models can accelerate software engineering workflows — from CI/CD debugging to context-aware deployment automation.</p>
+    <p>Outside work I'm learning Estonian, tinkering with algorithmic trading systems, and occasionally writing about distributed systems and AI tooling.</p>
+  </div>
+</section>
 
-	<div id="terminal"></div>
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-date">2022 — Present</span>
+      <div>
+        <div class="tl-role">Senior DevOps Engineer</div>
+        <div class="tl-company">Inbank / Blocklization OÜ · Tallinn, Estonia</div>
+        <div class="tl-desc">Owns Kubernetes platform, CI/CD pipelines (Jenkins, GitHub Actions, Argo CD), AWS infrastructure, and internal developer tooling. Led security assessment of macOS endpoints and implemented Grafana-based observability stacks.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">2020 — 2022</span>
+      <div>
+        <div class="tl-role">Cloud Infrastructure Engineer</div>
+        <div class="tl-company">Previous Role · Remote</div>
+        <div class="tl-desc">Designed and maintained cloud infrastructure across AWS. Implemented container orchestration, automated deployments, and monitoring solutions for production workloads.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-date">2018 — 2020</span>
+      <div>
+        <div class="tl-role">Backend Engineer</div>
+        <div class="tl-company">Earlier Role</div>
+        <div class="tl-desc">Built backend services and APIs, introduced containerization practices to the team, and contributed to infrastructure-as-code adoption.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <h3>LLM-Assisted CI/CD Debugger</h3>
+      <p style="font-size:14px;color:var(--muted);">Research prototype using Claude to diagnose CI/CD pipeline failures from logs and suggest fixes in natural language.</p>
+      <div class="proj-tags">
+        <span class="tag">Python</span><span class="tag">Claude API</span><span class="tag">Jenkins</span><span class="tag">GitHub Actions</span>
+      </div>
+      <a class="proj-link" href="#">View project →</a>
+    </div>
+    <div class="proj-card">
+      <h3>inbank.tv Kiosk Dashboard</h3>
+      <p style="font-size:14px;color:var(--muted);">Internal TV dashboard built on Grafana with OAuth-based role management and iframe embedding for real-time infrastructure metrics.</p>
+      <div class="proj-tags">
+        <span class="tag">Grafana</span><span class="tag">Kubernetes</span><span class="tag">OAuth</span>
+      </div>
+      <a class="proj-link" href="#">View project →</a>
+    </div>
+    <div class="proj-card">
+      <h3>Algo Trading Bot</h3>
+      <p style="font-size:14px;color:var(--muted);">Side project exploring automated trading strategies using Alpaca API and Claude MCP integration for signal interpretation.</p>
+      <div class="proj-tags">
+        <span class="tag">Python</span><span class="tag">Alpaca API</span><span class="tag">Claude MCP</span>
+      </div>
+      <a class="proj-link" href="#">View project →</a>
+    </div>
+    <div class="proj-card">
+      <h3>LLM Context Versioning</h3>
+      <p style="font-size:14px;color:var(--muted);">Research concept: treating LLM context as a first-class software artifact with versioning, diffing, and reproducibility guarantees.</p>
+      <div class="proj-tags">
+        <span class="tag">Research</span><span class="tag">LLMOps</span><span class="tag">Git</span>
+      </div>
+      <a class="proj-link" href="#">Read paper →</a>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-groups">
+    <div class="skill-group">
+      <h3>Infrastructure & Cloud</h3>
+      <div class="skill-pills">
+        <span class="pill">Kubernetes</span><span class="pill">AWS</span><span class="pill">Terraform</span><span class="pill">Helm</span><span class="pill">Argo CD</span><span class="pill">Harbor</span><span class="pill">cert-manager</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>CI/CD & Automation</h3>
+      <div class="skill-pills">
+        <span class="pill">Jenkins</span><span class="pill">GitHub Actions</span><span class="pill">Docker</span><span class="pill">Shell scripting</span><span class="pill">Python</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Observability & Security</h3>
+      <div class="skill-pills">
+        <span class="pill">Grafana</span><span class="pill">Prometheus</span><span class="pill">JumpCloud</span><span class="pill">Microsoft Defender</span><span class="pill">Endpoint security</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>AI & Research</h3>
+      <div class="skill-pills">
+        <span class="pill">LLM integration</span><span class="pill">Claude API</span><span class="pill">Prompt engineering</span><span class="pill">DevOps + AI</span><span class="pill">MCP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="edu-list">
+    <div class="edu-item">
+      <span class="edu-year">2024 — Present</span>
+      <div>
+        <div class="edu-degree">PhD Candidate — AI &amp; Software Engineering</div>
+        <div class="edu-inst">University of Tartu · Estonia</div>
+      </div>
+    </div>
+    <div class="edu-item">
+      <span class="edu-year">Earlier</span>
+      <div>
+        <div class="edu-degree">Bachelor's in Computer Science</div>
+        <div class="edu-inst">Your University Here</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-wrap">
+    <p>I'm open to research collaborations, infrastructure consulting, and interesting conversations. Reach out through any of the channels below.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:nagy@example.com">
+        <span class="contact-icon">✉</span> nagy@example.com
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/nagysalem" target="_blank">
+        <span class="contact-icon">in</span> linkedin.com/in/nagysalem
+      </a>
+      <a class="contact-link" href="https://github.com/nagysalem" target="_blank">
+        <span class="contact-icon">⌥</span> github.com/nagysalem
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built by Nagy Salem · Tallinn, Estonia
+</footer>
+
 </body>
+</html>
