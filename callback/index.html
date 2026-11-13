@@ -4,15 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Returning to Spend</title>
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>Returning to Tidy Wallet</title>
 <style>body{font-family:system-ui,sans-serif;text-align:center;margin-top:20vh;color:#333}</style>
 </head>
 <body>
 <p>Returning to the app&hellip;</p>
-<p><a id="open" href="spendlens://callback">Tap here if nothing happens</a></p>
+<p><a id="open" href="tidywallet-app://callback">Tap here if nothing happens</a></p>
 <script>
   // Forwards the bank redirect (?code=...&state=...) to the iPhone app. Nothing is stored or sent anywhere.
-  var target = "spendlens://callback" + location.search;
+  var target = "tidywallet-app://callback" + location.search;
   document.getElementById("open").href = target;
   location.replace(target);
 </script>
